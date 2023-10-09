@@ -1,0 +1,136 @@
+﻿@model List<AppWebAJAX.Models.ConsultasViewModel>
+
+
+@{
+    ViewBag.Title = "HomePage";
+}
+
+<h2>Consulta No. 1</h2>
+<p>
+    Consulta que muestre las órdenes de compra, sus detalles de las órdenes, y su método de
+    envío (ship method) generadas por el Vendor 1662, mostrando el PurchaseOrderID,
+    VendorID , ProductID , UnitPrice, StockedQty, nombre del método de envío y su ShipBase
+</p>
+<p id="Primero">
+
+</p>
+
+<input onclick="ObtenerUno();" type="button" value="ObtenerPrimerQuery" />
+
+<script>
+    function ObtenerUno() {
+        //Solicitud Fech
+        //Solicitud JSON para mostrarlos al dar clic en el boton
+        fetch("@Url.Content("~/Json/ObtenerConsultas")") //Url para no poner el nombre del host o dominio
+            .then(function(res){
+                return res.json();
+            })
+            .then(function (viewModel) {
+                //Muestreo en tablas
+                let resultado = "<table><tr><th>Order ID</th><th>Vendor ID</th><th>Order Detail ID</th><th>Product ID</th><th>Unit Price</th><th>Stocked Qty</th><th>Nombre de Envio</th><th>Ship Base</th></tr>";
+
+                // Verifica si ConsultaUno está definido y no es null
+                if (viewModel.ConsultaUno && viewModel.ConsultaUno.length > 0) {
+                    for (let i = 0; i < viewModel.ConsultaUno.length; i++) {
+                        // Verifica si el objeto actual tiene las propiedades antes de acceder a ellas
+                        if (viewModel.ConsultaUno[i].OrderID !== undefined &&
+                            viewModel.ConsultaUno[i].VendorID !== undefined &&
+                            viewModel.ConsultaUno[i].OrderDetailID !== undefined &&
+                            viewModel.ConsultaUno[i].ProductID !== undefined &&
+                            viewModel.ConsultaUno[i].UnitPrice !== undefined &&
+                            viewModel.ConsultaUno[i].StockedQty !== undefined &&
+                            viewModel.ConsultaUno[i].NombreEnvio !== undefined &&
+                            viewModel.ConsultaUno[i].ShipBase !== undefined) {
+
+                            resultado += "<tr>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].OrderID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].VendorID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].OrderDetailID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].ProductID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].UnitPrice + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].StockedQty + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].NombreEnvio + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaUno[i].ShipBase + "</td>";
+                            resultado += "</tr>";
+                        }
+                    }
+                }
+
+
+                document.getElementById("Primero").innerHTML = resultado;
+            })
+
+
+    }
+</script>
+<br />
+<br />
+<br />
+<h2>Consulta No. 2</h2>
+<p>
+    Consulta que muestre todas las órdenes de compra de los vendedores entre 1568 y 1572,
+    mostrando los detalles de los productos de cada orden, así como, el nombre del vendor y el
+    nombre del producto, es decir, la consulta deberá de mostrar PurchaseOrderID, VendorID,
+    Subtotal, Unitprice, OrderQty, ProductID, Nombre del producto, color, nombre del vendor,y
+    su AccountNumber
+</p>
+<p id="Segundo">
+
+</p>
+<input onclick="ObtenerDos();" type="button" value="ObtenerSegundoQuery" />
+<script>
+    function ObtenerDos() {
+        //Solicitud Fech
+        //Solicitud JSON para mostrarlos al dar clic en el boton
+        fetch("@Url.Content("~/Json/ObtenerConsultas")") //Url para no poner el nombre del host o dominio
+            .then(function(res){
+                return res.json();
+            })
+            .then(function (viewModel) {
+                let resultado = "<table><tr><th>Vendor ID</th><th>Vendor IdV</th><th>Purchase Order ID</th><th>Pod Purchase Order ID</th><th>SubTotal</th><th>Unit Price</th><th>Order Qty</th><th>Product ID</th><th>Product Name</th><th>Product Color</th><th>Vendor Name</th><th>Vendor Account Number</th></tr>";
+
+                if (viewModel.ConsultaDos && viewModel.ConsultaDos.length > 0) {
+                    for (let i = 0; i < viewModel.ConsultaDos.length; i++) {
+                        // Verifica si el objeto actual tiene las propiedades antes de acceder a ellas
+                        if (viewModel.ConsultaDos[i].VendorID !== undefined &&
+                            viewModel.ConsultaDos[i].VendorIdV !== undefined &&
+                            viewModel.ConsultaDos[i].PurchaseOrderID !== undefined &&
+                            viewModel.ConsultaDos[i].PodPurchaseOrderID !== undefined &&
+                            viewModel.ConsultaDos[i].SubTotal !== undefined &&
+                            viewModel.ConsultaDos[i].UnitPrice !== undefined &&
+                            viewModel.ConsultaDos[i].OrderQty !== undefined &&
+                            viewModel.ConsultaDos[i].ProductID !== undefined &&
+                            viewModel.ConsultaDos[i].ProductName !== undefined &&
+                            viewModel.ConsultaDos[i].ProductColor !== undefined &&
+                            viewModel.ConsultaDos[i].VendorName !== undefined &&
+                            viewModel.ConsultaDos[i].VendorAccountNumber !== undefined) {
+
+                            
+                            resultado += "<tr>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].VendorID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].VendorIdV + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].PurchaseOrderID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].PodPurchaseOrderID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].SubTotal + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].UnitPrice + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].OrderQty + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].ProductID + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].ProductName + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].ProductColor + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].VendorName + "</td>";
+                            resultado += "<td>" + viewModel.ConsultaDos[i].VendorAccountNumber + "</td>";
+                            resultado += "</tr>";
+                            
+                            
+
+                        }
+              
+                    }
+                }
+
+                resultado += "</table>";
+
+                document.getElementById("Segundo").innerHTML = resultado;
+            });
+    }
+</script>
