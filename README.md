@@ -5,7 +5,8 @@ Link para su vista:
 http://localhost:51091/Json/Index
 <br>
 Link donde se muestra el archivo json:
-http://localhost:51091/Json/ObtenerConsultas
+http://localhost:51091/Json/ObtenerConsultas <br>
+pd: el localhost puede variar segun su pc
 
 # Pantallas con resultados finales:
 # Pantalla general
