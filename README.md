@@ -1,6 +1,11 @@
 # AppWebAJAX
 Aplicación asíncrona Web utilizando AJAX para la ejecución y muestreo de consultas.
 
+Link para su vista:
+http://localhost:51091/Json/Index
+Link donde se muestra el archivo json:
+http://localhost:51091/Json/ObtenerConsultas
+
 # Pantallas con resultados finales:
 # Pantalla general
 ![image](https://github.com/Perla1802/AppWebAJAX/assets/59744172/fe119080-6e9c-4c48-a955-24f995ccb81b)
