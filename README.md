@@ -3,6 +3,7 @@ Aplicación asíncrona Web utilizando AJAX para la ejecución y muestreo de cons
 
 Link para su vista:
 http://localhost:51091/Json/Index
+<br>
 Link donde se muestra el archivo json:
 http://localhost:51091/Json/ObtenerConsultas
 
